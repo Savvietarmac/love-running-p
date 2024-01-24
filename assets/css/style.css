@@ -1,24 +1,33 @@
-/* Google font import */
+/* Google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
-/* Overrides default styles*/
+/* Asterisk wildcard selector to override default styles added by the browser */
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-/* general styles*/
+/* General styles */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /*generic project styles*/
+    /* Generic project styles */
     color: #3a3a3a;
     font-family: 'Lato', sans-serif;
 }
 
-/*Header*/
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #252525;
+}
+
+/* Header */
 header {
     background-color: #ffffff;
     padding: 0 1rem;
@@ -26,9 +35,9 @@ header {
     z-index: 99;
     width: 100%;
     box-shadow: 0 2px 2px #3a3a3a;
-    align-items: baseline;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 header a {
@@ -36,54 +45,78 @@ header a {
     color: inherit;
 }
 
-h1 {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #252525;
+#menu {
+    font-size: 110%;
+    letter-spacing: 4px;
+    list-style-type: none;
 }
 
-/* Navbar styles with dropdown toggle*/
+#menu>li {
+    margin-bottom: 1em;
+}
+
+.active {
+    border-bottom: 1px solid #3a3a3a;
+}
+
+/* Navbar styles with dropdown toggle */
 nav {
     position: absolute;
     background-color: #ffffff;
     width: 100%;
     left: 0;
-    padding-bottom: 0 1rem;
+    padding: 0 1rem;
     box-shadow: 0 2px 2px #3a3a3a;
     display: none;
     top: 100%;
 }
 
-/*nav toggle*/
+/* Nav toggle */
 #nav-toggle:checked~nav {
     display: block;
 }
 
 #nav-toggle {
     display: none;
-
 }
 
 .nav-toggle-label {
     font-size: 2rem;
 }
 
-/*Main content*/
+/* Main content */
 main {
-    /*Make main element take up any surplus space to push footer down*/
+    /* Make main element take up any surplus space to push footer down */
     flex: 1 0 auto;
     margin-top: 47px;
 }
 
-/* Hero  section*/
+/* Hero section */
 #hero {
     height: 600px;
     width: 100%;
     background: url("../images/hero-image.webp") no-repeat center center/cover;
+    position: relative;
 }
 
-/* Footer*/
+#cover-text {
+    /* Final rgba value sets the opacity so it is semi-transparent */
+    background-color: rgba(241, 109, 107, .7);
+    font-size: 130%;
+    position: absolute;
+    bottom: 30px;
+    width: 80%;
+    min-height: 200px;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+#cover-text>h2,
+#cover-text>h3 {
+    color: #ffffff;
+}
+
+/* Footer */
 #social-networks {
     text-align: center;
     padding: 20px 0;
@@ -98,23 +131,10 @@ main {
     color: #3a3a3a;
 }
 
-.active {
-    border-bottom: 1px solid #3a3a3a;
-}
-
-#menu {
-    font-size: 110%;
-    letter-spacing: 4px;
-    list-style-type: none;
-}
-
-#menu > li {
-    margin-bottom: 1em;
-}
-
-/* Media query: tablets and larger (768px and up)*/
+/* Media query: tablets and larger (768px and up) */
 @media screen and (min-width: 768px) {
-    /* Header*/
+
+    /* Header */
     nav {
         display: block;
         position: relative;
@@ -126,7 +146,8 @@ main {
     #menu {
         display: flex;
     }
-    #menu > li {
+
+    #menu>li {
         padding-left: 1rem;
     }
 
@@ -140,14 +161,21 @@ main {
         margin: 0 0.5rem;
     }
 
+    /* Main content */
     main {
-        /* Push content down again*/
+        /* Push main content down to accommodate larger header */
         margin-top: 79px;
+    }
+
+    /* Hero image */
+    #cover-text {
+        width: 300px;
+        right: 50px;
     }
 }
 
+/* Large devices (laptops and desktops, 992px and up) */
 @media screen and (min-width: 992px) {
-    /* laptop specific, also nav hover */ 
     #menu a:hover {
         border-bottom: 1px solid #3a3a3a;
     }
